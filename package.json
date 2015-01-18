@@ -1,0 +1,11 @@
+{
+  "name": "workbalance",
+  "version": "0.0.1",
+  "description": "Small web-application to keep track on how you spend your (working) time.",
+  "main": "server/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Martin Hecher <martin.hecher.g@gmail.com>",
+  "license": "MIT"
+}
