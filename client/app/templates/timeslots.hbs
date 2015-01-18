@@ -1,1 +1,21 @@
-{{outlet}}
+<h1>Timeslots</h1>
+
+{{#each timeslots}}
+
+<h2>Date: {{date}}</h2>
+
+<ul>
+	<li>{{start}}</li>
+	<li>{{end}}</li>
+	<li>{{description}}</li>
+</ul>
+
+<h2>Tags: {{tags}}</h2>
+
+<ul>
+	{{#each tags}}
+		<li>{{this}}</li>
+	{{/each}}
+</ul>
+
+{{/each}}
