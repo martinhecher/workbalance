@@ -3,7 +3,7 @@ FROM artificial/docker-sails:stable-pm2
 COPY ./server /server
 COPY ./client /client
 
-#RUN npm install -g ember-cli sails
+RUN npm install -g sails
 
 WORKDIR /server
 RUN npm install
