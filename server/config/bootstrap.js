@@ -9,9 +9,57 @@
  * http://sailsjs.org/#/documentation/reference/sails.config/sails.config.bootstrap.html
  */
 
+function addFixturesToDb() {
+	console.log('[bootstrap] Fixtures ...');
+
+	var timeslots = [];
+
+	timeslots.push({
+		date: '2015-01-07',
+		start: '2015-01-07T09:01:14',
+		end: '2015-01-07T10:32:44',
+		tags: ['general'],
+		description: 'Mails'
+	});
+
+	timeslots.push({
+		date: '2015-01-07',
+		start: '2015-01-07T10:32:44',
+		end: '2015-01-07T12:32:44',
+		tags: ['meeting'],
+		description: 'Weekly jour fixe meeting'
+	});
+
+	timeslots.push({
+		date: '2015-01-07',
+		start: '2015-01-07T12:32:44',
+		end: '2015-01-07T13:00:44',
+		tags: ['break'],
+		description: 'Lunch'
+	});
+
+	for (var idx = 0; idx < timeslots.length; idx++) {
+		var timeslot = timeslots[idx];
+
+		Timeslots.create(timeslot, function(err, record) {
+			record.save(function() {
+				console.log('Created timeslot for date: ' + record.description);
+			});
+		});
+	};
+}
+
 module.exports.bootstrap = function(cb) {
 
-  // It's very important to trigger this callback method when you are finished
-  // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
-  cb();
+	Timeslots.find().exec(function(err, timeslots) {
+		// console.log('timeslots: ' + JSON.stringify(timeslots, null, 4));
+
+		if (timeslots.length) {
+			console.log('[bootstrap] ... already created.')
+			return cb();
+		}
+
+		addFixturesToDb();
+		cb();
+	});
 };
