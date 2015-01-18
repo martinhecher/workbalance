@@ -29,7 +29,8 @@
   },
   "scripts": {
     "start": "node app.js",
-    "debug": "node debug app.js"
+    "debug": "node debug app.js",
+    "test": "grunt test"
   },
   "main": "app.js",
   "repository": {
@@ -37,5 +38,11 @@
     "url": "git://github.com/martin/server.git"
   },
   "author": "martin",
-  "license": ""
+  "license": "",
+  "devDependencies": {
+    "mocha": "~2.1.0",
+    "grunt-mocha-test": "~0.12.6",
+    "sinon": "~1.12.2",
+    "assert": "~1.3.0"
+  }
 }
